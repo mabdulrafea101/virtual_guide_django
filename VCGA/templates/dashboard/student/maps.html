@@ -1,0 +1,75 @@
+{% extends "dashboard/student-base.html" %} {% load static %}
+{% block main_content %}
+<div class="row">
+  <div class="col-md-12 p-2">
+    <h1>
+      <i class="mdi mdi-map-marker-multiple"> </i> Navigate to university.
+    </h1>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col-md-4 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Route To Library</h4>
+        <div class="media">
+          <i
+            class="mdi mdi-earth icon-md text-info d-flex align-self-start mr-3"
+          ></i>
+          <div class="media-body">
+            <p class="card-text">
+              This is route to Library, you can navigate here !!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Route To GYM</h4>
+        <div class="media">
+          <i
+            class="mdi mdi-earth icon-md text-success d-flex align-self-start mr-3"
+          ></i>
+          <div class="media-body">
+            <p class="card-text">
+              This is route to GYM, you can navigate here !!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Route To Grounds</h4>
+        <div class="media">
+          <i
+            class="mdi mdi-earth icon-md text-danger d-flex align-self-start mr-3"
+          ></i>
+          <div class="media-body">
+            <p class="card-text">
+              This is route to Grounds, you can navigate here !!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 grid-margin" center>
+    <img
+      src="{% static 'dashboard/assets/images/demp-map.png' %}"
+      alt=""
+      style="height: fit-content; width: auto"
+    />
+  </div>
+</div>
+
+{% endblock main_content %}

@@ -1,0 +1,186 @@
+{% extends "dashboard/student-base.html" %} 
+{% block main_content %}
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Student Dashboard</h1>
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="col-lg-3 col-6 mb-2">
+    <a href="#">
+      <div
+        class=""
+        style="
+          align-content: center;
+          height: 5rem;
+          background-color: #d593f2;
+          border-radius: 20px;
+        "
+      >
+        <h3 class="text-info">
+          <i class="mdi mdi-football" style="font-size: 30px"></i> participated
+          Events &nbsp; &nbsp; &nbsp; 5
+        </h3>
+      </div>
+    </a>
+  </div>
+  <div class="col-lg-3 col-6 mb-2">
+    <a href="#">
+      <div
+        class="p-2"
+        style="
+          align-content: center;
+          height: 5rem;
+          background-color: #93c6f2;
+          border-radius: 20px;
+        "
+      >
+        <h3 class="text-primary">
+          <i class="mdi mdi-map-marker-multiple"></i> Universiti Navigation
+        </h3>
+      </div>
+    </a>
+  </div>
+  <div class="col-lg-3 col-6 mb-2">
+    <a href="#">
+      <div
+        class="p-2"
+        style="
+          align-content: center;
+          height: 5rem;
+          background-color: #d593f2;
+          border-radius: 20px;
+        "
+      >
+        <h3 class="text-info">
+          <i class="mdi mdi-fire"></i> Announcements &nbsp; &nbsp; &nbsp; 20
+        </h3>
+      </div>
+    </a>
+  </div>
+  <div class="col-lg-3 col-6 mb-2">
+    <a href="#">
+      <div
+        class="p-2"
+        style="
+          align-content: center;
+          height: 5rem;
+          background-color: #93c6f2;
+          border-radius: 20px;
+        "
+      >
+        <h3 class="text-primary">
+          <i class="mdi mdi-message-text"></i> Faculty Messages &nbsp; &nbsp;
+          &nbsp; 1
+        </h3>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <h1 class="text-info">Upcoming Events</h1>
+</div>
+
+<div class="row mt-4">
+  <div class="col-sm-4 grid-margin stretch-card">
+    <div class="card card-danger-gradient">
+      <div class="card-body mb-4">
+        <h4 class="card-title text-white">University Football</h4>
+        <canvas id="account-retension"></canvas>
+      </div>
+      <div class="card-body bg-white pt-4">
+        <div class="row pt-4">
+          <div class="col-sm-6">
+            <div class="text-center border-right border-md-0">
+              <h4>Particepants</h4>
+              <h1 class="text-dark font-weight-bold mb-md-3">306</h1>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="text-center">
+              <h4>Likes</h4>
+              <h1 class="text-dark font-weight-bold">1,520</h1>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col-sm-4">
+            <a href="#"><i class="mdi mdi-eye"></i> Details</a>
+          </div>
+          <div class="col-sm-4">
+            <i class="mdi mdi-calendar-clock"></i> 10:00AM
+          </div>
+          <div class="col-sm-4">01-04-2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4 grid-margin stretch-card">
+    <div class="card card-danger-gradient">
+      <div class="card-body mb-4">
+        <h4 class="card-title text-white">University Football</h4>
+        <canvas id="account-retension"></canvas>
+      </div>
+      <div class="card-body bg-white pt-4">
+        <div class="row pt-4">
+          <div class="col-sm-6">
+            <div class="text-center border-right border-md-0">
+              <h4>Particepants</h4>
+              <h1 class="text-dark font-weight-bold mb-md-3">306</h1>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="text-center">
+              <h4>Likes</h4>
+              <h1 class="text-dark font-weight-bold">1,520</h1>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col-sm-4">
+            <a href="#"><i class="mdi mdi-eye"></i> Details</a>
+          </div>
+          <div class="col-sm-4">
+            <i class="mdi mdi-calendar-clock"></i> 10:00AM
+          </div>
+          <div class="col-sm-4">01-04-2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4 grid-margin stretch-card">
+    <div class="card" style="background-color: #93c6f2">
+      <div class="card-body mb-4"></div>
+      <div class="card-body bg-white pt-4">
+        <div class="row pt-4">
+          <div class="col-sm-6">
+            <div class="text-center border-right border-md-0">
+              <h4>Particepants</h4>
+              <h1 class="text-dark font-weight-bold mb-md-3">50</h1>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="text-center">
+              <h4>Likes</h4>
+              <h1 class="text-dark font-weight-bold">400</h1>
+            </div>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col-sm-4">
+            <a href="#"><i class="mdi mdi-eye"></i> Details</a>
+          </div>
+          <div class="col-sm-4">
+            <i class="mdi mdi-calendar-clock"></i> 01:00PM
+          </div>
+          <div class="col-sm-4">15-04-2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main_content %}
