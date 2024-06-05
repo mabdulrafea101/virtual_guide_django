@@ -1,10 +1,16 @@
 from django.urls import path, reverse_lazy
 
 from django.contrib.auth.views import LogoutView
-from .views import login, student_register, faculty_register
+
+from .forms import MyLoginForm
+from .views import ManagementLoginView, student_register, faculty_register
 
 urlpatterns = [
-    path('login/', login, name='login'),
+    path("login/",
+         ManagementLoginView.as_view(
+            
+            authentication_form=MyLoginForm,
+            ), name="login", ),
     path("logout/", LogoutView.as_view(
         template_name="user/logout.html",
         next_page=reverse_lazy("home")

@@ -68,53 +68,7 @@ class AdminSignupForm(UserCreationForm):
 
     def save(self):
         user = super().save(commit=False)
-        user.is_superuser = True
-        # user.is_admin = True
-        user.is_staff = True
-        user.save()
-        return user
-
-
-class FacultySignupForm(UserCreationForm):
-    first_name = forms.CharField(
-        max_length=30,
-        required=False,
-        help_text="Optional",
-        widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Last Name"}
-        ),
-    )
-    last_name = forms.CharField(
-        max_length=30,
-        required=False,
-        help_text="Optional",
-        widget=forms.TextInput(
-            attrs={"class": "form-control", "placeholder": "Last Name"}
-        ),
-    )
-    email = forms.EmailField(
-        max_length=254,
-        required=True,
-        help_text="Your valid email address",
-        widget=forms.EmailInput(
-            attrs={"class": "form-control", "placeholder": "Email"}
-        ),
-    )
-
-    class Meta(UserCreationForm.Meta):
-        model = CustomUser
-        fields = (
-            "username",
-            "first_name",
-            "last_name",
-            "email",
-            "password1",
-            "password2",
-        )
-
-    def save(self):
-        user = super().save(commit=False)
-        user.is_superuser = True
+        user.is_superuser = False
         user.is_staff = True
         user.save()
         return user
@@ -159,7 +113,52 @@ class StudentSignupForm(UserCreationForm):
 
     def save(self):
         user = super().save(commit=False)
-        user.is_superuser = True
-        user.is_staff = False
+        user.is_superuser = False
+        user.is_student = True
+        user.save()
+        return user
+
+
+class StaffSignupForm(UserCreationForm):
+    first_name = forms.CharField(
+        max_length=30,
+        required=False,
+        help_text="Optional",
+        widget=forms.TextInput(
+            attrs={"class": "form-control", "placeholder": "Last Name"}
+        ),
+    )
+    last_name = forms.CharField(
+        max_length=30,
+        required=False,
+        help_text="Optional",
+        widget=forms.TextInput(
+            attrs={"class": "form-control", "placeholder": "Last Name"}
+        ),
+    )
+    email = forms.EmailField(
+        max_length=254,
+        required=True,
+        help_text="Your valid email address",
+        widget=forms.EmailInput(
+            attrs={"class": "form-control", "placeholder": "Email"}
+        ),
+    )
+
+    class Meta(UserCreationForm.Meta):
+        model = CustomUser
+        fields = (
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "password1",
+            "password2",
+        )
+
+    def save(self):
+        user = super().save(commit=False)
+        user.is_superuser = False
+        user.is_staff = True
         user.save()
         return user

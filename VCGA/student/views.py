@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
+from user.decorators import student_required
+
 # Create your views here.
 
 
+@student_required
 def student_home(request, *args, **kwargs):
     context = {
         'title': 'Student Dashboard',
@@ -15,6 +18,7 @@ def student_home(request, *args, **kwargs):
         )
 
 
+@student_required
 def student_map(request, *args, **kwargs):
     context = {
         'title': 'Map - Student'

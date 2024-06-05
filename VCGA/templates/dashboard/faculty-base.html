@@ -12,6 +12,13 @@
     <!-- plugins:css -->
     <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
       href="{% static 'dashboard/assets/vendors/mdi/css/materialdesignicons.min.css' %}"
     />
     <link
@@ -179,14 +186,16 @@
                   >
                     Actions
                   </h5>
-
-                    <a
+                  <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button
                       class="dropdown-item py-1 d-flex align-items-center justify-content-between"
-                      href="{% url 'logout' %}"
+                      type="submit"
                     >
                       <span>Log Out</span>
                       <i class="mdi mdi-logout ml-1"></i>
-                    </a>
+                    </button>
+                  </form>
                 </div>
               </div>
             </li>
@@ -317,10 +326,16 @@
             </li>
             <li class="nav-item sidebar-user-actions">
               <div class="sidebar-user-menu">
-                <a href="{% url 'logout' %}" class="nav-link"
-                  ><i class="mdi mdi-logout menu-icon"></i>
-                  <span class="menu-title">Log Out</span></a
-                >
+                <form action="{% url 'logout' %}" method="post">
+                  {% csrf_token %}
+                  <button
+                    class="dropdown-item py-1 d-flex align-items-center justify-content-between"
+                    type="submit"
+                  >
+                    <span>Log Out</span>
+                    <i class="mdi mdi-logout ml-1"></i>
+                  </button>
+                </form>
               </div>
             </li>
           </ul>
