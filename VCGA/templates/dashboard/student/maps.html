@@ -1,5 +1,5 @@
-{% extends "dashboard/student-base.html" %} {% load static %}
-{% block main_content %}
+{% extends "dashboard/student-base.html" %} {% load static %} {% comment %} {%
+endcomment %}{% comment %} {% endcomment %} {% block main_content %}
 <div class="row">
   <div class="col-md-12 p-2">
     <h1>
@@ -9,67 +9,71 @@
 </div>
 
 <div class="row mt-2">
-  <div class="col-md-4 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Route To Library</h4>
-        <div class="media">
-          <i
-            class="mdi mdi-earth icon-md text-info d-flex align-self-start mr-3"
-          ></i>
-          <div class="media-body">
-            <p class="card-text">
-              This is route to Library, you can navigate here !!
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Route To GYM</h4>
-        <div class="media">
-          <i
-            class="mdi mdi-earth icon-md text-success d-flex align-self-start mr-3"
-          ></i>
-          <div class="media-body">
-            <p class="card-text">
-              This is route to GYM, you can navigate here !!
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Route To Grounds</h4>
-        <div class="media">
-          <i
-            class="mdi mdi-earth icon-md text-danger d-flex align-self-start mr-3"
-          ></i>
-          <div class="media-body">
-            <p class="card-text">
-              This is route to Grounds, you can navigate here !!
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="d-flex align-items-start">
+      <div
+        class="nav flex-column nav-pills me-3"
+        id="v-pills-tab"
+        role="tablist"
+        aria-orientation="vertical"
+      >
+        {% for map in maps %} {% if map.id == 1 %}
+        <button
+          class="nav-link active"
+          id="{{ map.id }}"
+          data-bs-toggle="pill"
+          data-bs-target="#v-pills-{{map.id}}"
+          type="button"
+          role="tab"
+          aria-controls="v-pills-{{map.id}}"
+          aria-selected="true"
+        >
+          {{map.location_name}}
+        </button>
+        {% else %}
 
-<div class="row">
-  <div class="col-md-6 grid-margin" center>
-    <img
-      src="{% static 'dashboard/assets/images/demp-map.png' %}"
-      alt=""
-      style="height: fit-content; width: auto"
-    />
+        <button
+          class="nav-link"
+          id="{{map.id}}"
+          data-bs-toggle="pill"
+          data-bs-target="#v-pills-{{map.id}}"
+          type="button"
+          role="tab"
+          aria-controls="v-pills-{{map.id}}"
+          aria-selected="false"
+        >
+          {{map.location_name}}
+        </button>
+        {% endif %} {% endfor %}
+      </div>
+
+      <div class="tab-content" id="v-pills-tabContent">
+        {% for map in maps %} {% if map.id == 1 %}
+        <div
+          class="tab-pane fade show active"
+          id="v-pills-{{map.id}}"
+          role="tabpanel"
+          aria-labelledby="{{map.id}}-tab"
+          tabindex="0"
+        >
+          {{ map.location_frame|safe }}
+        </div>
+        {% else %}
+        <div
+          class="tab-pane fade"
+          id="v-pills-{{map.id}}"
+          role="tabpanel"
+          aria-labelledby="{{map.id}}-tab"
+          tabindex="0"
+        >
+          {{ map.location_frame|safe }}
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
   </div>
+  <div class="col-md-1"></div>
 </div>
 
 {% endblock main_content %}
