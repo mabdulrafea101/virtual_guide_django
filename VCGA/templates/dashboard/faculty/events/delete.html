@@ -1,0 +1,40 @@
+{% extends "dashboard/faculty-base.html" %} {% block main_content %}
+
+<h1>Confirm Delete Event</h1>
+<div class="row mt-2">
+    <div class="col-md-4">
+        
+    </div>
+
+  <div class="col-md-6 d-flex justify-content-between">
+    <h1>ID</h1>
+    <h1>Title</h1>
+    <div>
+        <h1>Confirm</h1>
+    </div>
+  </div>
+
+  <div class="col-md-2"></div>
+</div>
+<div class="row mt-2">
+    <div class="col-md-4">
+        
+    </div>
+
+  <div class="col-md-6 d-flex justify-content-between">
+    <h3>{{ event.id }}</h3>
+    <h3>{{ event.title }}</h3>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Yes, delete</button>
+            <a class="btn btn-success" href="{% url 'event-detail' event.id %}">Cancel</a>
+        </form>
+    </div>
+    
+  </div>
+
+  <div class="col-md-2"></div>
+</div>
+
+{% endblock main_content %}

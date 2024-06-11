@@ -35,6 +35,8 @@ class Event(models.Model):
     category = models.ForeignKey(EventCategory,
                                  on_delete=models.PROTECT,
                                  related_name="event")
+    start_at = models.DateTimeField(blank=True, null=True)
+    ends_at = models.DateTimeField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to="events/",

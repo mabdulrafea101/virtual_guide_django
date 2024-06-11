@@ -1,0 +1,49 @@
+{% extends "dashboard/faculty-base.html" %} {% block main_content %}
+
+<h1>Edit {{ event.title }}</h1>
+<div class="row">
+  <div class="col-md-3"></div>
+
+  <div class="col-md-6">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Title</span>
+        {{ form.title }}
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Event Description</span>
+        {{ form.content }}
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2">Select Category</span>
+        {{ form.category }}
+      </div>
+      <div class="input-group mb-3">
+        {{ form.image }}
+        <label class="input-group-text" for="image_label">Upload</label>
+      </div>
+
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="start_at_label">Starts at</label>
+        {{ form.start_at }}
+      </div>
+
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupFile02">Ends At</label>
+        {{ form.ends_at }}
+      </div>
+
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-primary" type="submit">
+          Save Event
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-md-3"></div>
+</div>
+
+{% endblock main_content %}

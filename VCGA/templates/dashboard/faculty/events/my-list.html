@@ -1,6 +1,6 @@
 {% extends "dashboard/faculty-base.html" %} {% block main_content %}
 
-<h1>Event List Page</h1>
+<h1>My Event List</h1>
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
@@ -21,7 +21,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for event in events %}
+            {% for event in events %} {% if request.user == event.created_by %}
             <tr>
               <td>{{ event.title }}</td>
               <td>{{ event.category }}</td>
@@ -39,22 +39,14 @@
                 </label>
               </td>
               <td>
-                {% if request.user == event.created_by %}
                 <label class="badge badge-success">
                   <a href="{% url 'event-update' event.id %}" class="text-dark">
                     <i class="mdi mdi-pencil-box-outline"></i>
                   </a>
                 </label>
-                {% else %}
-                <label class="badge badge-danger">
-                  <a class="text-dark">
-                    <i class="mdi mdi-block-helper"></i>
-                  </a>
-                </label>
-                {% endif %}
               </td>
             </tr>
-            {% endfor %}
+            {% else %} {% endif %} {% endfor %}
           </tbody>
         </table>
       </div>

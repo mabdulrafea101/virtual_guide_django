@@ -1,0 +1,60 @@
+{% extends "dashboard/faculty-base.html" %} {% load static %} 
+{% block main_content %}
+
+<h1>{{ event.title }} created by {{ event.created_by }} </h1>
+<div class="row">
+  <div class="col-md-2"></div>
+
+  <div class="col-md-8">
+    <div class="card" >
+      {% if event.image %}
+      <img src="{{ event.image.url }}" class="card-img-top" alt="{{event.image.url}}" height="400px" width="auto"/>
+      {% else %}
+      <img src="" class="card-img-top" alt="no Image" />
+      {% endif %}
+
+      <div class="card-body">
+        <h5 class="card-title">{{ event.title }}</h5>
+        <p class="card-text">{{ event.content }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between">
+            <span class="text-danger" style="font-size: large;"> ID : </span>
+            <span class="text-info" style="font-size: large;">{{ event.id }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span class="text-danger" style="font-size: large;"> Category : </span>
+            <span class="text-info" style="font-size: large;">{{ event.category }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span class="text-danger" style="font-size: large;"> Opening Date : </span>
+            <span class="text-info" style="font-size: large;">{{ event.start_at.date }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span class="text-danger" style="font-size: large;"> Starting Time : </span>
+            <span class="text-info" style="font-size: large;">{{ event.start_at.time }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+            <span class="text-danger" style="font-size: large;"> Ends At : </span>
+            <span class="text-info" style="font-size: large;">{{ event.ends_at }}</span>
+        </li>
+      </ul>
+      <div class="card-body">
+        <label class="badge badge-success">
+            <a href="{% url 'event-update' event.id %}" class="text-dark">
+              <i class="mdi mdi-pencil-box-outline"></i>
+            </a>
+        </label>
+        <label class="badge badge-danger ml-2">
+            <a href="{% url 'event-delete' event.id %}" class="text-dark">
+              <i class="mdi mdi-folder-remove"></i>
+            </a>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2"></div>
+</div>
+
+{% endblock main_content %}

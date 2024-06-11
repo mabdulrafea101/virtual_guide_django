@@ -1,9 +1,11 @@
 {% extends "dashboard/faculty-base.html" %} {% block main_content %}
 <h1>Event Create Page</h1>
 <div class="row">
-    <div class="col-md-3"></div>
+    <div class="col-md-3">
+        {{ form.errors }}
+    </div>
     <div class="col-md-6">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             
             <div class="input-group mb-3">
@@ -19,8 +21,22 @@
                 {{ form.category }}
             </div>
             <div class="input-group mb-3">
-                <input type="file" class="form-control" id="inputGroupFile02">
-                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                {{ form.image }}
+                {% if form.image.errors %}
+                    <div class="error">
+                    {{ form.image.errors }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="start_at_label">Starts at</label>
+                {{ form.start_at }}
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile02">Ends At</label>
+                {{ form.ends_at }}
             </div>
 
             <div class="input-group mb-3">

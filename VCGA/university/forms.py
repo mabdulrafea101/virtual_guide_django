@@ -31,9 +31,18 @@ class EventCategoryForm(forms.ModelForm):
 
 
 class EventForm(forms.ModelForm):
+    image = forms.ImageField(
+        widget=forms.ClearableFileInput(attrs={'class': 'form-control'})
+    )
+
     class Meta:
         model = Event
-        fields = ("title", "content", "category", "image")
+        fields = ("title",
+                  "content", 
+                  "category", 
+                  "image", 
+                  "start_at", 
+                  "ends_at")
         labels = {
             "title": _("Event Name"),
             "content": _("Details"),
@@ -59,6 +68,12 @@ class EventForm(forms.ModelForm):
                 attrs={
                     "class": "form-control",
                 },       
+            ),
+            "start_at": forms.DateTimeInput(
+                attrs={'class': 'form-control', 'type': 'datetime-local'}
+            ),
+            "ends_at": forms.DateTimeInput(
+                attrs={'class': 'form-control', 'type': 'datetime-local'}
             ),
 
         }
