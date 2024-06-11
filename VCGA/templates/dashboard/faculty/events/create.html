@@ -5,8 +5,28 @@
     <div class="col-md-6">
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Save" class="btn btn-primary" />
+            
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Title</span>
+                {{ form.title }}
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Event Description</span>
+                {{ form.content }}
+            </div>            
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Select Category</span> 
+                {{ form.category }}
+            </div>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="inputGroupFile02">
+                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-primary" type="submit">Save Event</button>
+            </div>
+            
         </form>
     </div>
     <div class="col-md-3"></div>

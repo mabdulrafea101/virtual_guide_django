@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView
 
 from .forms import EventForm
 from .models import Event, EventCategory
@@ -24,7 +25,14 @@ class EventCreateView(CreateView):
     model = Event
     form_class = EventForm
     template_name = "dashboard/faculty/events/create.html"
+    success_url = reverse_lazy('event-list')
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
+
+
+class EventListView(ListView):
+    model = Event
+    context_object_name = 'Event'
+    template_name = 'dashboard/faculty/events/list.html'

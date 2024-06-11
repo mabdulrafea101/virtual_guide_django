@@ -4,6 +4,10 @@ from django.utils.translation import gettext_lazy as _
 
 
 class EventCategoryForm(forms.ModelForm):
+    image = forms.ImageField(
+        widget=forms.ClearableFileInput(attrs={'class': 'form-control'})
+    )
+    
     class Meta:
         model = EventCategory
         fields = ["name", "description", "image"]
@@ -37,12 +41,15 @@ class EventForm(forms.ModelForm):
             "image": _("Upload Image"),
         }
         widgets = {
-            "name": forms.TextInput(
+            "title": forms.TextInput(
                 attrs={
                     "class": "form-control",
+                    "aria-label": "event-name",
+                    "placeholder": "Event Name",
+                    "aria-describedby": "basic-addon1",
                 }
             ),
-            "description": forms.Textarea(
+            "content": forms.Textarea(
                 attrs={
                     "class": "form-control",
                     "rows": 4,
