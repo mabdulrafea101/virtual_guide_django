@@ -260,17 +260,23 @@
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Sports</a>
+                    <a
+                      class="nav-link"
+                      href="{% url 'student-events-category-list' %}"
+                      >Categories</a
+                    >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Academic</a>
+                    <a class="nav-link" href="{% url 'student-events-list' %}"
+                      >All Events</a
+                    >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Other</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"
-                      ><i class="mdi mdi-football"></i> &nbsp;My Events</a
+                    <a
+                      class="nav-link"
+                      href="{% url 'student-events-participated-list' %}"
+                      ><i class="mdi mdi-football"></i> &nbsp;Participated
+                      Events</a
                     >
                   </li>
                 </ul>

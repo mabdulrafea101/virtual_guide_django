@@ -1,6 +1,10 @@
-{% extends "dashboard/faculty-base.html" %} {% block main_content %}
+{% extends "dashboard/student-base.html" %} {% block main_content %}
+<div class="row">
+  <div class="col-sm-12">
+    <h1>All Events List</h1>
+  </div>
+</div>
 
-<h1>Event List Page</h1>
 <div class="row mt-2">
   <div class="col-md-1"></div>
   <div class="col-md-10">
@@ -28,26 +32,36 @@
               <td class="text-primary">{{ event.start_at.date }}</td>
               <td class="text-info">{{ event.start_at.time }}</td>
               <td class="text-danger">{{ event.ends_at.date }}</td>
+
+              
+            {% if event.id in participated_events %}
+                <td class="text-success">Participated</td>
+            {% else %}
+            <td class="text-danger">Not Participated</td>
+            {% endif %}
+              
               <td>
                 <label class="badge badge-info">
-                  <a
-                    href="{% url 'event-detail' event.id %}"
-                    class="text-success"
-                  >
-                    <i class="mdi mdi-eye"></i>
-                  </a>
+                    <a
+                      href="{% url 'student-event-detail' event.id %}"
+                      class="text-success"
+                    >
+                      <i class="mdi mdi-eye"></i>
+                    </a>
                 </label>
-              </td>
-              <td>
-                {% if request.user == event.created_by %}
+{% if request.user.is_student and not event.id in participated_events %}
+
                 <label class="badge badge-success">
-                  <a href="{% url 'event-update' event.id %}" class="text-dark">
+                  <a
+                    href="{% url 'student-events-participate' event.id %}"
+                    class="text-dark"
+                  >
                     <i class="mdi mdi-pencil-box-outline"></i>
                   </a>
                 </label>
                 {% else %}
                 <label class="badge badge-danger">
-                  <a class="text-dark">
+                  <a href="{% url 'student-events-un-participate' event.id %}" class="text-dark">
                     <i class="mdi mdi-block-helper"></i>
                   </a>
                 </label>

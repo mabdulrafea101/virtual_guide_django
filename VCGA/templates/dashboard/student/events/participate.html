@@ -1,0 +1,23 @@
+{% extends "dashboard/student-base.html" %} {% block main_content %}
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Participated Event Detail</h1>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-1"></div>
+
+
+    <div class="col-md-10">
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+        </form>
+    </div>
+
+
+    <div class="col-md-1"></div>
+</div>
+
+{% endblock main_content %}

@@ -1,0 +1,92 @@
+{% extends "dashboard/student-base.html" %} {% block main_content %}
+
+<div class="container mt-5">
+  <div class="row">
+    {% for event in events %}
+    <div class="col-lg-4 grid-margin">
+      <div
+        class="card text-bg-dark mb-3"
+        style="max-width: 540px; height: auto"
+      >
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              src=" {{ event.image.url }} "
+              class="img-fluid rounded-start"
+              alt="{{ event.image.url }}"
+              style="height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title text-light">{{event.title}}</h5>
+              <p class="card-text">{{ event.content }}</p>
+              <p class="card-text">
+                <small class="text-muted"
+                  ><b class="text-info">Starts on</b> {{ event.start_at.date }}
+                </small>
+              </p>
+              <p class="card-text">
+                <small class="text-muted"
+                  ><b class="text-info">ends at</b> {{ event.ends_at.date }}
+                </small>
+              </p>
+              <p class="card-text">
+                <small class="text-muted"
+                  ><b class="text-success">From : </b>{{ event.start_at.time }}
+                  <b class="text-success"> to </b> {{ event.ends_at.time }}
+                </small>
+              </p>
+              <p class="card-text">
+                <smal class="text-muted">
+                    {% if event.id in participation %}
+                    <b class="text-success">Participated</b>
+                    {% else %}
+                    <b class="text-danger">Not Participated</b>
+            {% endif %}
+                </smal>
+              </p>
+              <p class="card-text">
+                <small class="text-muted">
+{% if request.user.is_student and event.id in participation %}
+
+                  <label class="badge badge-success">
+                    <a
+                      href="{% url 'student-events-participate' event.id %}"
+                      class="text-dark"
+                    >
+                      <i class="mdi mdi-pencil-box-outline"></i>
+                    </a>
+                  </label>
+                  {% else %}
+                  <label class="badge badge-danger">
+                    <a
+                      href="{% url 'student-events-un-participate' event.id %}"
+                      class="text-dark"
+                    >
+                      <i class="mdi mdi-block-helper"></i>
+                    </a>
+                  </label>
+                  {% endif %}
+                </small>
+                <small class="text-muted">
+                    <label class="badge badge-info">
+                        <a
+                          href="{% url 'student-event-detail' event.id %}"
+                          class="text-success"
+                        >
+                          <i class="mdi mdi-eye"></i>
+                        </a>
+                    </label>
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock main_content %}

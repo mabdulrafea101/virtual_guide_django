@@ -12,10 +12,10 @@ class ParticipatedEvent(models.Model):
         'university.Event',
         related_name='participated', 
         on_delete=models.CASCADE)
-    is_participated = True
+    is_participated = models.BooleanField(default=False)
 
     def __str__(self):
-        pass
+        return f"{self.event.title} ====> {self.participant}"
 
     class Meta:
         app_label = 'student'

@@ -47,20 +47,6 @@ class Event(models.Model):
         return self.title
 
 
-# class Image(models.Model):
-#     class Meta:
-#         app_label = "university"
-#         managed = True
-#         verbose_name = 'Image'
-#         verbose_name_plural = 'Images'
-#     post = models.ForeignKey(Event,
-#                              on_delete=models.CASCADE, related_name='images')
-#     image = models.ImageField(upload_to='blog_images/')
-
-#     def __str__(self):
-#         return f"Image for {self.post.title}"
-
-
 class Comment(models.Model):
     class Meta:
         app_label = "university"

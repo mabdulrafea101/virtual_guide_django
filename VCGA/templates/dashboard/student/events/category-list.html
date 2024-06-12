@@ -1,0 +1,51 @@
+{% extends "dashboard/student-base.html" %} {% block main_content %}
+<div class="row mb-2">
+  <div class="col-sm-12">
+    <h1>Event Category List</h1>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">All Categories Table</h4>
+        <p class="card-description">You can View<code>Categoires</code></p>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Image</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for category in categories %}
+            <tr>
+              <td>{{ category.id }}</td>
+              <td class="text-primary">{{ category.name }}</td>
+              <td class="text-info">{{ category.description }}</td>
+              <td class="text-danger">
+                <img src="{{ category.image.url}}" alt="{{ category.image.url}}">
+              </td>
+              <td>
+                <label class="badge badge-primary">
+                  <a href="#" class="text-success">
+                    <i class="mdi mdi-eye"></i>
+                  </a>
+                </label>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+
+{% endblock main_content %}
