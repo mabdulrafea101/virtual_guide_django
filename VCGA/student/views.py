@@ -11,7 +11,7 @@ from .forms import CommentForm
 
 from .models import ParticipatedEvent
 from website.models import UniversityLocation
-from university.models import Event, EventCategory
+from university.models import Comment, Document, Event, EventCategory
 from user.decorators import student_required
 
 # Create your views here.
@@ -118,6 +118,11 @@ def events_by_category(request, *args, **kwargs):
 
     context = {}
     print(kwargs["pk"])
+    user = request.user
+    participated_events = ParticipatedEvent.objects.filter(
+            participant=user,
+            is_participated=True).values_list('event_id', flat=True)
+    context['participated_events'] = participated_events
     context["events"] = Event.objects.filter(category_id=kwargs["pk"]).all()
 
     return render(
@@ -152,3 +157,15 @@ class EventCagetoryListView(ListView):
     model = EventCategory
     context_object_name = 'categories'
     template_name = 'dashboard/student/events/category-list.html'
+
+
+class StudentCommentListView(ListView):
+    model = Comment
+    context_object_name = 'my-comment'
+    template_name = 'dashboard/student/document/document_list.html'
+
+
+class DocumentList(ListView):
+    model = Document
+    context_object_name = 'documents'
+    template_name = 'dashboard/student/documents/document_list.html'

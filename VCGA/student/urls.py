@@ -9,11 +9,13 @@ from .views import (
     student_map,
     EventListView,
     EventCagetoryListView,
-    ParticipatedEventListView
+    ParticipatedEventListView,
+    DocumentList
     )
 
 urlpatterns = [
     path('', student_home, name="student-home"),
+    path('documents/', DocumentList.as_view(), name="student_document_list"),
     path('maps/',
          student_map,
          name="student-map"),

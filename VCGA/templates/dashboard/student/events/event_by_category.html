@@ -39,7 +39,7 @@
               </p>
               <p class="card-text">
                 <smal class="text-muted">
-                    {% if event.id in participation %}
+                    {% if event.id in participated_events %}
                     <b class="text-success">Participated</b>
                     {% else %}
                     <b class="text-danger">Not Participated</b>
@@ -48,7 +48,7 @@
               </p>
               <p class="card-text">
                 <small class="text-muted">
-{% if request.user.is_student and event.id in participation %}
+{% if request.user.is_student and not event.id in participated_events %}
 
                   <label class="badge badge-success">
                     <a

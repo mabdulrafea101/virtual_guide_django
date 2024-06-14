@@ -65,3 +65,13 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.author} on {self.post.title}"
+
+
+class Document(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    uploaded_at = models.DateTimeField(auto_now=True)
+    file = models.FileField(upload_to='documents/')
+
+    def __str__(self):
+        return self.name

@@ -1,0 +1,26 @@
+{% extends "dashboard/faculty-base.html" %} {% load static %} 
+{% block main_content %}
+    <div class="row">
+        <div class="col-lg-2"></div>
+    
+        <div class="col-lg-8">
+
+            <h2>Documents</h2>
+            {% if not request.user.is_student %}
+            <a href="{% url 'document_add' %}" class="btn btn-success mb-3">Add Document</a>
+
+            {% endif %}
+            
+            <ul>
+            {% for document in documents %}
+                <li>
+                <h3>{{ document.name }}</h3>
+                <p>{{ document.description }}</p>
+                <p>Uploaded at: {{ document.uploaded_at }}</p>
+                <a href="{{ document.file.url }}">Download</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endblock main_content %}

@@ -268,17 +268,19 @@
                     >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'my-event-list' %}">My Events</a>
+                    <a class="nav-link" href="{% url 'my-event-list' %}"
+                      >My Events</a
+                    >
                   </li>
                 </ul>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pages/icons/mdi.html">
+              <a class="nav-link" href="{% url 'document_list' %}">
                 <span class="icon-bg"
                   ><i class="mdi mdi-bell-ring menu-icon"></i
                 ></span>
-                <span class="menu-title">Notifications</span>
+                <span class="menu-title">Documents</span>
               </a>
             </li>
             <li class="nav-item">

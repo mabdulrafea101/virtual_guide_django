@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 
-from .forms import EventForm
-from .models import Event, EventCategory
+from .forms import DocumentForm, EventForm
+from .models import Document, Event, EventCategory
 from user.decorators import staff_required
 # Create your views here.
 
@@ -61,3 +61,16 @@ class EventDeleteView(DeleteView):
     model = Event
     template_name = "dashboard/faculty/events/delete.html"
     success_url = reverse_lazy('event-list')
+
+
+class DocumentCreateView(CreateView):
+    model = Document
+    form_class = DocumentForm
+    template_name = 'dashboard/faculty/documents/document_create.html'
+    success_url = reverse_lazy('document_list')
+
+
+class DocumentListView(ListView):
+    model = Document
+    template_name = 'dashboard/faculty/documents/document_list.html'
+    context_object_name = 'documents'

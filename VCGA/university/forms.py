@@ -1,5 +1,5 @@
 from django import forms
-from .models import EventCategory, Event
+from .models import Document, EventCategory, Event
 from django.utils.translation import gettext_lazy as _
 
 
@@ -76,4 +76,15 @@ class EventForm(forms.ModelForm):
                 attrs={'class': 'form-control', 'type': 'datetime-local'}
             ),
 
+        }
+
+
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ['name', 'description', 'file']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'file': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }

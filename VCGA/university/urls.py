@@ -1,6 +1,8 @@
 from django.urls import path
 
 from .views import (
+    DocumentCreateView,
+    DocumentListView,
     home,
     EventCreateView,
     EventListView,
@@ -23,4 +25,7 @@ urlpatterns = [
     path('event/delete/<int:pk>/', 
          EventDeleteView.as_view(), 
          name='event-delete'),
+
+    path('documents/', DocumentListView.as_view(), name='document_list'),
+    path('documents/add/', DocumentCreateView.as_view(), name='document_add'),
 ]
