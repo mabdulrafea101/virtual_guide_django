@@ -158,6 +158,20 @@ class EventCagetoryListView(ListView):
     context_object_name = 'categories'
     template_name = 'dashboard/student/events/category-list.html'
 
+    def get_queryset(self):
+        return EventCategory.objects.annotate(event_count=Count('event'))
+    
+
+class EventListViewByCategory(ListView):
+    model = Event
+    context_object_name = 'events'
+    template_name = 'dashboard/student/events/event_by_category.html'
+
+    def get_queryset(self):
+        category_id = self.kwargs['category_id']
+        return Event.objects.filter(category_id=category_id)
+    
+
 
 class StudentCommentListView(ListView):
     model = Comment

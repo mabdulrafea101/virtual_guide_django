@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import (
+    EventListViewByCategory,
     StudentEventDetail,
     event_participate,
     event_un_participate,
@@ -39,7 +40,10 @@ urlpatterns = [
         events_by_category,
         name="events-by-category"
     ),
-    
+    path(
+        'categories/<int:category_id>/events/',
+        EventListViewByCategory.as_view(),
+        name='event_list_by_category'),
     path(
         'events/participated/list/',
         ParticipatedEventListView.as_view(),
