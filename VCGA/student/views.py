@@ -1,4 +1,3 @@
-from typing import Any
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
@@ -170,7 +169,6 @@ class EventListViewByCategory(ListView):
     def get_queryset(self):
         category_id = self.kwargs['category_id']
         return Event.objects.filter(category_id=category_id)
-    
 
 
 class StudentCommentListView(ListView):
