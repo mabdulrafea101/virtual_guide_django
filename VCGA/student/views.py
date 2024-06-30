@@ -159,7 +159,7 @@ class EventCagetoryListView(ListView):
 
     def get_queryset(self):
         return EventCategory.objects.annotate(event_count=Count('event'))
-    
+
 
 class EventListViewByCategory(ListView):
     model = Event
